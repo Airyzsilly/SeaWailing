@@ -1,3 +1,4 @@
+define config.end_game_transition = fade
 define f = Character("คุณพ่อ", color="#000000")
 define b = Character("เบ็ก", color="#000000")
 define e = Character("เอลนี่", color="#a54848")
@@ -705,7 +706,7 @@ label start:
 
   menu:
 
-        
+        " คุณจะทำยังไง "
 
         "วิ่งหนีไปให้ไกลที่สุด":
             jump BadEnd
@@ -728,10 +729,20 @@ label start:
 
               scene #bad end's picture that i have to draw myself
 
-              jump start 
+              return
 
   label Next:
 
+              scene #still try to reason to elny
+              with dissolve
+              play music "dream.mp3" fadeout 1 loop
+
+              " เอลนี่ออกแรงบีบที่คอของคุณ ทำให้คุณรู้สึกเริ่มขาดอากาศหายใจ "
+              " แต่เพราะคุณยังไม่ยอมแพ้ก็เลยพยายามขัดขืนสุดความสามารถ
+              และพยายามเรียกสติอีกฝ่ายให้กลับมาด้วย "
+
+              b " ได้สติสักทีสิเอลนี่!!!! นี่ฉันเองนะ เบ็กไง?! "
+              
 
 
 

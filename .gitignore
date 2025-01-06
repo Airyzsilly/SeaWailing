@@ -1,1 +1,6 @@
 .vscode
+game/saves
+errors.txt
+log.txt
+*.rpyc
+game/cache
