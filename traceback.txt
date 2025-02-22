@@ -1,0 +1,28 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 16, in script
+    define config.main_menu_music_loop = "audio/main.mp3"
+  File "renpy/common/000namespaces.rpy", line 33, in set
+    setattr(self.nso, name, value)
+Exception: config.main_menu_music_loop is not a known configuration variable.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 16, in script
+    define config.main_menu_music_loop = "audio/main.mp3"
+  File "C:\Users\uSeR\Downloads\PenPy\renpy-8.1.3-sdk\renpy\ast.py", line 2508, in execute
+    self.set()
+  File "C:\Users\uSeR\Downloads\PenPy\renpy-8.1.3-sdk\renpy\ast.py", line 2526, in set
+    ns.set(self.varname, value)
+  File "renpy/common/000namespaces.rpy", line 33, in set
+    setattr(self.nso, name, value)
+  File "C:\Users\uSeR\Downloads\PenPy\renpy-8.1.3-sdk\renpy\defaultstore.py", line 101, in __setattr__
+    raise Exception('config.%s is not a known configuration variable.' % (name))
+Exception: config.main_menu_music_loop is not a known configuration variable.
+
+Windows-10-10.0.19045 AMD64
+Ren'Py 8.1.3.23091805
+Sea wailing 1.0
+Thu Feb 20 21:21:19 2025

@@ -297,17 +297,17 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("Start") action Start()
+            textbutton _("เริ่มเกม") action Start()
 
         else:
 
-            textbutton _("History") action ShowMenu("history")
+            textbutton _("ประวัติ") action ShowMenu("history")
 
-            textbutton _("Save") action ShowMenu("save")
+            textbutton _("บันทึก") action ShowMenu("save")
 
-        textbutton _("Load") action ShowMenu("load")
+        textbutton _("โหลด") action ShowMenu("load")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+        textbutton _("การตั้งค่า") action ShowMenu("preferences")
 
         if _in_replay:
 
@@ -315,20 +315,20 @@ screen navigation():
 
         elif not main_menu:
 
-            textbutton _("Main Menu") action MainMenu()
+            textbutton _("เมนูหลัก") action MainMenu()
 
-        textbutton _("About") action ShowMenu("about")
+        textbutton _("เกี่ยวกับ") action ShowMenu("about")
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
+            textbutton _("ช่วยเหลือ") action ShowMenu("help")
 
         if renpy.variant("pc"):
 
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
+            textbutton _("ออก") action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -353,7 +353,11 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
+    if persistent.end:
+        add gui.main_menu_background_end
+
+    else:
+        add gui.main_menu_background
 
     ## This empty frame darkens the main menu.
     frame:
@@ -398,9 +402,11 @@ style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
 
 style main_menu_title:
+    color "#fff"
     properties gui.text_properties("title")
 
 style main_menu_version:
+    color "#fff"
     properties gui.text_properties("version")
 
 
