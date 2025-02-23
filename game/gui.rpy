@@ -90,6 +90,7 @@ define gui.title_text_size = 75
 define gui.main_menu_background = "gui/bg_start.png"
 define gui.game_menu_background = "gui/bg_start.png"
 define gui.main_menu_background_end = "gui/bg_end.png"
+define gui.swap_button = "gui/swap.png"
 
 
 ## Dialogue ####################################################################

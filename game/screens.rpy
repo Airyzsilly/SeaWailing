@@ -4,6 +4,13 @@
 
 init offset = -1
 
+transform swap_button_rotate:
+    on idle:
+        easein 0.5 rotate 0
+    on hover:
+        easein 0.5 rotate 20
+
+
 
 ################################################################################
 ## Styles
@@ -341,21 +348,22 @@ style navigation_button:
 style navigation_button_text:
     properties gui.button_text_properties("navigation_button")
 
-
-## Main Menu screen ############################################################
-##
-## Used to display the main menu when Ren'Py starts.
-##
-## https://www.renpy.org/doc/html/screen_special.html#main-menu
-
+default preferred_alt = False
 screen main_menu():
 
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    if persistent.end:
-        add gui.main_menu_background_end
+    python:
+        def swap(*args, **kwargs):
+            global preferred_alt
+            preferred_alt = not preferred_alt
 
+    if persistent.end:
+        if not preferred_alt:
+            add gui.main_menu_background_end
+        else:
+            add gui.main_menu_background
     else:
         add gui.main_menu_background
 
@@ -366,6 +374,17 @@ screen main_menu():
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
     use navigation
+
+    if persistent.end:
+        vbox xalign 1.0 yalign 0.0 xoffset -16 yoffset 30:
+            imagebutton:
+                idle gui.swap_button
+                hover gui.swap_button
+                action [
+                    Function(swap, _update_screens=False),
+                    With(dissolve)
+                    ]
+                at swap_button_rotate
 
     if gui.show_name:
 
